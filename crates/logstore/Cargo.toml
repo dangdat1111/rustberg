@@ -1,0 +1,20 @@
+[package]
+name = "rustberg-logstore"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rustberg-core.workspace = true
+async-trait.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tokio = { workspace = true, features = ["sync"] }
+# rdkafka needs libsasl2/libssl/cyrus-sasl headers on the build machine
+# (via the `cmake` build of librdkafka), which is why it's gated behind
+# a feature instead of a hard workspace dependency — see src/kafka.rs.
+rdkafka = { version = "0.36", features = ["tokio"], optional = true }
+
+[features]
+default = []
+kafka = ["dep:rdkafka"]
