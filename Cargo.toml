@@ -1,0 +1,36 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/core",
+    "crates/metastore",
+    "crates/catalog",
+    "crates/optimizer",
+    "crates/logstore",
+    "crates/api",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/your-org/rustberg"
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+anyhow = "1"
+async-trait = "0.1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+axum = "0.7"
+sqlx = { version = "0.7", features = ["runtime-tokio", "postgres", "chrono", "uuid", "json", "macros", "migrate"] }
+
+rustberg-core = { path = "crates/core" }
+rustberg-metastore = { path = "crates/metastore" }
+rustberg-catalog = { path = "crates/catalog" }
+rustberg-optimizer = { path = "crates/optimizer" }
+rustberg-logstore = { path = "crates/logstore" }
