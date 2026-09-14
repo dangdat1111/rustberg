@@ -1,0 +1,23 @@
+[package]
+name = "rustberg-optimizer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rustberg-core.workspace = true
+async-trait.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+# DataFusion does the actual compaction (read Parquet files -> merge/sort
+# plan -> write new Parquet files). Left optional for now: it's a large
+# dependency and the physical compaction plan needs iceberg-rust's
+# manifest/data-file APIs wired in first (see docs/roadmap.md). The
+# `plan()` below already produces the OptimizeJob shape a DataFusion-based
+# `execute()` would consume.
+datafusion = { version = "41", optional = true }
+
+[features]
+default = []
+datafusion-exec = ["dep:datafusion"]
