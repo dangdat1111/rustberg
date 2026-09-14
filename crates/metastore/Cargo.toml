@@ -1,0 +1,14 @@
+[package]
+name = "rustberg-metastore"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rustberg-core.workspace = true
+sqlx.workspace = true
+serde_json.workspace = true
+async-trait.workspace = true
+chrono.workspace = true
+uuid.workspace = true
+tracing.workspace = true
