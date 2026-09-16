@@ -1,19 +1,30 @@
 [workspace]
-resolver = "2"
 members = [
-    "crates/core",
-    "crates/metastore",
-    "crates/catalog",
-    "crates/optimizer",
-    "crates/logstore",
-    "crates/api",
+    "rustberg-common",
+    "rustberg-core",
+    "rustberg-optimizer",
+    "rustberg-proto",
+    "rustberg-proto-common",
+    "rustberg-proto-common/gen",
+    "rustberg-proto-models",
+    "rustberg-proto-models/gen",
+    "test-utils",
+    "benchmarks",
+    "rustberg-macros",
+    "docs",
+    "xtask",
 ]
 
+exclude = ["dev/dependencies-check"]
+resolver = "2"
+
 [workspace.package]
-version = "0.1.0"
-edition = "2021"
-license = "Apache-2.0"
+authors = ["Rust Berg <dangdat234678@gmail.com>"]
+edition = "2024"
+readme = "README.md"
 repository = "https://github.com/dangdat1111/rustberg"
+
+rust-version = "1.98.1"
 
 [workspace.dependencies]
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal"] }
@@ -28,9 +39,3 @@ uuid = { version = "1", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
 axum = "0.7"
 sqlx = { version = "0.7", features = ["runtime-tokio", "postgres", "chrono", "uuid", "json", "macros", "migrate"] }
-
-rustberg-core = { path = "crates/core" }
-rustberg-metastore = { path = "crates/metastore" }
-rustberg-catalog = { path = "crates/catalog" }
-rustberg-optimizer = { path = "crates/optimizer" }
-rustberg-logstore = { path = "crates/logstore" }

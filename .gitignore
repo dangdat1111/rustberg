@@ -1,13 +1,11 @@
 # Rust build output
-/target
+target
 
 # Cargo
 Cargo.lock
 
 # Environment variables
-.env
-.env.local
-
+venv/*
 # IDE
 .vscode/
 .idea/
@@ -24,3 +22,6 @@ docker-compose.override.yml
 
 # Logs
 *.log
+# Generated core benchmark data
+rustberg/core/benches/data/*
+
